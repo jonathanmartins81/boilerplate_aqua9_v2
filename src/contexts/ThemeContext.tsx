@@ -60,6 +60,30 @@ export function ThemeProvider({
   useEffect(() => {
     if (!mounted) return;
 
+    const getCurrentTheme = () => {
+      const actualMode = mode === 'system' ? getSystemTheme() : mode;
+
+      return actualMode === 'dark'
+        ? {
+          'primary-color': '#4F8CFF',
+          'secondary-color': '#A5B4FC',
+          'accent-color': '#FFC145',
+          'background-color': '#181920',
+          'text-color': '#FAFAFA',
+          'border-color': '#222327',
+          'card-color': '#23242BF6',
+        }
+        : {
+          'primary-color': '#0070f3',
+          'secondary-color': '#5856D6',
+          'accent-color': '#FFAD05',
+          'background-color': '#FAFAFA',
+          'text-color': '#1A1A1A',
+          'border-color': '#E5E5E5',
+          'card-color': '#FFFFFFF6',
+        };
+    };
+
     const currentTheme = getCurrentTheme();
     const root = document.documentElement;
 
@@ -84,29 +108,6 @@ export function ThemeProvider({
   }, [mode, mounted]);
 
   // ===== FUNÇÕES DE CONTROLE =====
-  const getCurrentTheme = () => {
-    const actualMode = mode === 'system' ? getSystemTheme() : mode;
-
-    return actualMode === 'dark'
-      ? {
-        'primary-color': '#4F8CFF',
-        'secondary-color': '#A5B4FC',
-        'accent-color': '#FFC145',
-        'background-color': '#181920',
-        'text-color': '#FAFAFA',
-        'border-color': '#222327',
-        'card-color': '#23242BF6',
-      }
-      : {
-        'primary-color': '#0070f3',
-        'secondary-color': '#5856D6',
-        'accent-color': '#FFAD05',
-        'background-color': '#FAFAFA',
-        'text-color': '#1A1A1A',
-        'border-color': '#E5E5E5',
-        'card-color': '#FFFFFFF6',
-      };
-  };
 
   const toggleMode = () => {
     setMode(prev => {

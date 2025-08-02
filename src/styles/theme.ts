@@ -470,7 +470,7 @@ export const utils = {
     if (colorPath === 'error.500') return colors.error[500];
     if (colorPath === 'info.500') return colors.info[500];
 
-    console.warn(`Color path "${colorPath}" not found`);
+    // console.warn(`Color path "${colorPath}" not found`);
     return colors.gray[500];
   },
 

@@ -565,11 +565,49 @@ chore: atualizar dependências
 
 ---
 
+## 📚 **Documentação Organizada**
+
+### **📋 Documentação Principal**
+
+- 📖 **[README.md](./README.md)** - Documentação principal do projeto
+- 🗺️ **[IMPROVEMENTS_ROADMAP.md](./IMPROVEMENTS_ROADMAP.md)** - Roadmap de melhorias
+- 📦 **[PACKAGE.md](./PACKAGE.md)** - Documentação do package.json
+- 🤝 **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Guia de contribuição
+- 📚 **[DOCUMENTATION_INDEX.md](./DOCUMENTATION_INDEX.md)** - Índice completo da documentação
+
+### **📊 Relatórios de Implementação**
+
+- 🧪 **[TEST_COVERAGE_IMPROVEMENTS.md](./TEST_COVERAGE_IMPROVEMENTS.md)** - Melhorias na cobertura de testes
+- 🎨 **[STORYBOOK_IMPLEMENTATION_REPORT.md](./STORYBOOK_IMPLEMENTATION_REPORT.md)** - Implementação do Storybook
+- ⚡ **[PERFORMANCE_OPTIMIZATIONS_REPORT.md](./PERFORMANCE_OPTIMIZATIONS_REPORT.md)** - Otimizações de performance
+- 🚀 **[ADVANCED_IMPROVEMENTS_REPORT.md](./ADVANCED_IMPROVEMENTS_REPORT.md)** - Melhorias avançadas
+
+### **🔧 Guias Técnicos**
+
+- 🔒 **[SECURITY_GUIDE.md](./SECURITY_GUIDE.md)** - Guia completo de segurança
+- 🌐 **[ENVIRONMENT_VARIABLES.md](./ENVIRONMENT_VARIABLES.md)** - Variáveis de ambiente
+- 📈 **[CODECOV_GUIDE.md](./CODECOV_GUIDE.md)** - Configuração do Codecov
+- 🎨 **[TAILWIND_CSS_CONVERSION_REPORT.md](./TAILWIND_CSS_CONVERSION_REPORT.md)** - Conversão para Tailwind CSS
+
+### **📚 Documentação de Componentes**
+
+- 🧩 **[COMPONENTS_LIBRARY.md](./COMPONENTS_LIBRARY.md)** - Biblioteca de componentes
+- 🔍 **[SEO_DYNAMIC_SYSTEM.md](./SEO_DYNAMIC_SYSTEM.md)** - Sistema de SEO dinâmico
+- 📝 **[DYNAMIC_SEO_GUIDE.md](./DYNAMIC_SEO_GUIDE.md)** - Guia de SEO dinâmico
+
+### **🛠️ Guias de Qualidade**
+
+- ✨ **[CODE_QUALITY.md](./CODE_QUALITY.md)** - Padrões de qualidade de código
+- 🔗 **[QUALITY_HOOKS.md](./QUALITY_HOOKS.md)** - Hooks de qualidade
+- 💬 **[COMMENTS_GUIDE.md](./COMMENTS_GUIDE.md)** - Guia de comentários
+
+---
+
 ## 📞 **Suporte**
 
 ### **Recursos**
 
-- 📖 **[Documentação](./docs/)** - Guias detalhados
+- 📖 **[Documentação Completa](./DOCUMENTATION_INDEX.md)** - Índice de toda documentação
 - 🐛 **[Issues](https://github.com/jonathanmartins81/boilerplate_aqua9_v2/issues)** - Reportar bugs
 - 💡 **[Discussions](https://github.com/jonathanmartins81/boilerplate_aqua9_v2/discussions)** - Discussões
 - 📧 **Email:** jonathan@aqua9.com.br

@@ -1,6 +1,5 @@
-import React from 'react';
 import dynamic from 'next/dynamic';
-import { ComponentType } from 'react';
+import React, { ComponentType } from 'react';
 
 /**
  * Utilitários para code splitting dinâmico
@@ -8,20 +7,20 @@ import { ComponentType } from 'react';
 
 // Loading component padrão
 const DefaultLoading = () => (
-  <div className="flex items-center justify-center p-8">
-    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-    <span className="ml-2 text-gray-600">Carregando...</span>
+  <div className='flex items-center justify-center p-8'>
+    <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600'></div>
+    <span className='ml-2 text-gray-600'>Carregando...</span>
   </div>
 );
 
 // Error component padrão
 const DefaultError = ({ error }: { error: Error }) => (
-  <div className="flex items-center justify-center p-8 text-red-600">
-    <div className="text-center">
-      <div className="text-2xl mb-2">⚠️</div>
-      <div className="text-sm">Erro ao carregar componente</div>
+  <div className='flex items-center justify-center p-8 text-red-600'>
+    <div className='text-center'>
+      <div className='text-2xl mb-2'>⚠️</div>
+      <div className='text-sm'>Erro ao carregar componente</div>
       {process.env.NODE_ENV === 'development' && (
-        <div className="text-xs text-gray-500 mt-1">{error.message}</div>
+        <div className='text-xs text-gray-500 mt-1'>{error.message}</div>
       )}
     </div>
   </div>
@@ -58,7 +57,7 @@ export function createDynamicComponent<T extends ComponentType<any>>(
     loading,
     ssr,
     loadingDelay,
-    onError: (error) => {
+    onError: error => {
       console.error('Dynamic import error:', error);
     },
   });
@@ -85,13 +84,13 @@ export const DynamicChart = createDynamicComponent(
   {
     ssr: false,
     loading: () => (
-      <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto mb-2"></div>
-          <div className="text-sm text-gray-600">Carregando gráfico...</div>
+      <div className='flex items-center justify-center h-64 bg-gray-50 rounded-lg'>
+        <div className='text-center'>
+          <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto mb-2'></div>
+          <div className='text-sm text-gray-600'>Carregando gráfico...</div>
         </div>
       </div>
-    )
+    ),
   }
 );
 
@@ -101,12 +100,12 @@ export const DynamicDataTable = createDynamicComponent(
   {
     ssr: false,
     loading: () => (
-      <div className="space-y-3">
+      <div className='space-y-3'>
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="h-12 bg-gray-200 animate-pulse rounded"></div>
+          <div key={i} className='h-12 bg-gray-200 animate-pulse rounded'></div>
         ))}
       </div>
-    )
+    ),
   }
 );
 
@@ -115,13 +114,13 @@ export const DynamicMap = createDynamicComponent(
   {
     ssr: false,
     loading: () => (
-      <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg">
-        <div className="text-center">
-          <div className="text-2xl mb-2">🗺️</div>
-          <div className="text-sm text-gray-600">Carregando mapa...</div>
+      <div className='flex items-center justify-center h-64 bg-gray-50 rounded-lg'>
+        <div className='text-center'>
+          <div className='text-2xl mb-2'>🗺️</div>
+          <div className='text-sm text-gray-600'>Carregando mapa...</div>
         </div>
       </div>
-    )
+    ),
   }
 );
 
@@ -131,13 +130,13 @@ export const DynamicFormBuilder = createDynamicComponent(
   {
     ssr: false,
     loading: () => (
-      <div className="space-y-4">
-        <div className="h-8 bg-gray-200 animate-pulse rounded"></div>
-        <div className="h-12 bg-gray-200 animate-pulse rounded"></div>
-        <div className="h-12 bg-gray-200 animate-pulse rounded"></div>
-        <div className="h-8 bg-gray-200 animate-pulse rounded w-1/3"></div>
+      <div className='space-y-4'>
+        <div className='h-8 bg-gray-200 animate-pulse rounded'></div>
+        <div className='h-12 bg-gray-200 animate-pulse rounded'></div>
+        <div className='h-12 bg-gray-200 animate-pulse rounded'></div>
+        <div className='h-8 bg-gray-200 animate-pulse rounded w-1/3'></div>
       </div>
-    )
+    ),
   }
 );
 
@@ -147,13 +146,13 @@ export const DynamicCodeEditor = createDynamicComponent(
   {
     ssr: false,
     loading: () => (
-      <div className="flex items-center justify-center h-64 bg-gray-900 rounded-lg">
-        <div className="text-center text-white">
-          <div className="text-2xl mb-2">💻</div>
-          <div className="text-sm">Carregando editor...</div>
+      <div className='flex items-center justify-center h-64 bg-gray-900 rounded-lg'>
+        <div className='text-center text-white'>
+          <div className='text-2xl mb-2'>💻</div>
+          <div className='text-sm'>Carregando editor...</div>
         </div>
       </div>
-    )
+    ),
   }
 );
 
@@ -163,13 +162,13 @@ export const DynamicVideoPlayer = createDynamicComponent(
   {
     ssr: false,
     loading: () => (
-      <div className="flex items-center justify-center h-64 bg-gray-900 rounded-lg">
-        <div className="text-center text-white">
-          <div className="text-2xl mb-2">🎥</div>
-          <div className="text-sm">Carregando vídeo...</div>
+      <div className='flex items-center justify-center h-64 bg-gray-900 rounded-lg'>
+        <div className='text-center text-white'>
+          <div className='text-2xl mb-2'>🎥</div>
+          <div className='text-sm'>Carregando vídeo...</div>
         </div>
       </div>
-    )
+    ),
   }
 );
 
@@ -178,12 +177,15 @@ export const DynamicImageGallery = createDynamicComponent(
   {
     ssr: false,
     loading: () => (
-      <div className="grid grid-cols-3 gap-4">
+      <div className='grid grid-cols-3 gap-4'>
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="aspect-square bg-gray-200 animate-pulse rounded"></div>
+          <div
+            key={i}
+            className='aspect-square bg-gray-200 animate-pulse rounded'
+          ></div>
         ))}
       </div>
-    )
+    ),
   }
 );
 
@@ -207,7 +209,7 @@ export function useLazyLoad<T>(
     if (!element) return;
 
     const observer = new IntersectionObserver(
-      async (entries) => {
+      async entries => {
         const [entry] = entries;
         if (entry.isIntersecting && !module && !loading) {
           setLoading(true);
@@ -236,4 +238,4 @@ export function useLazyLoad<T>(
   }, [importFunc, module, loading, options.threshold, options.rootMargin]);
 
   return { ref, module, loading, error };
-} 
+}
