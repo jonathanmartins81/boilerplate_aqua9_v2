@@ -26,7 +26,7 @@ export function Main({
         alt='Aqua9 Logo'
         width={120}
         height={64}
-        className='mb-6 sm:mb-8 w-20 sm:w-24 lg:w-32 h-auto transition-all duration-300'
+        className='mb-6 sm:mb-8 w-24 sm:w-28 lg:w-36 h-auto transition-all duration-300'
         priority
       />
 
@@ -55,6 +55,7 @@ export function Main({
         width={300}
         height={200}
         className='w-48 sm:w-64 lg:w-80 h-auto opacity-80 dark:opacity-60 animate-bounce-in transition-all duration-300 filter dark:invert'
+        priority
       />
 
       {/* Informações adicionais sobre o tema */}
@@ -66,3 +67,6 @@ export function Main({
     </main>
   );
 }
+
+// Exportação default para compatibilidade
+export default Main;

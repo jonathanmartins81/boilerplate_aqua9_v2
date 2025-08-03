@@ -1,10 +1,20 @@
-// Estilos inline para o componente
-export const wrapperStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  minHeight: '100vh',
-  padding: '2rem',
-  textAlign: 'center'
+// Função utilitária para combinar classes CSS
+const cn = (...classes: (string | boolean | undefined | null)[]) => {
+  return classes.filter(Boolean).join(' ');
+};
+
+// Estilos base do componente
+export const wrapperStyles = 'flex flex-col items-center justify-center min-h-screen p-8 text-center';
+
+// Variantes de estilo
+export const styleVariants = {
+  default: 'bg-white dark:bg-gray-900',
+  elevated: 'bg-white dark:bg-gray-900 shadow-lg',
+  outlined: 'bg-transparent border-2 border-gray-300 dark:border-gray-600',
+  glass: 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/20',
+};
+
+// Função para gerar estilos combinados
+export const getStyles = (variant: keyof typeof styleVariants = 'default') => {
+  return cn(wrapperStyles, styleVariants[variant]);
 };

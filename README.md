@@ -348,10 +348,10 @@ const USERS = {
 
 ### **Guias Disponíveis**
 
-- 📖 **[SECURITY_GUIDE.md](./SECURITY_GUIDE.md)** - Guia completo de segurança
-- 📋 **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Como contribuir
-- 🚀 **[IMPROVEMENTS_ROADMAP.md](./IMPROVEMENTS_ROADMAP.md)** - Roadmap de melhorias
-- 🔧 **[DEPENDENCY_UPGRADE_GUIDE.md](./DEPENDENCY_UPGRADE_GUIDE.md)** - Atualização de dependências
+- 📖 **[SECURITY_GUIDE.md](./docs/SECURITY_GUIDE.md)** - Guia completo de segurança
+- 📋 **[CONTRIBUTING.md](./docs/CONTRIBUTING.md)** - Como contribuir
+- 🚀 **[IMPROVEMENTS_ROADMAP.md](./docs/IMPROVEMENTS_ROADMAP.md)** - Roadmap de melhorias
+- 🔧 **[DEPENDENCY_UPGRADE_GUIDE.md](./docs/DEPENDENCY_UPGRADE_GUIDE.md)** - Atualização de dependências
 
 ### **Exemplos Práticos**
 
@@ -570,36 +570,14 @@ chore: atualizar dependências
 ### **📋 Documentação Principal**
 
 - 📖 **[README.md](./README.md)** - Documentação principal do projeto
-- 🗺️ **[IMPROVEMENTS_ROADMAP.md](./IMPROVEMENTS_ROADMAP.md)** - Roadmap de melhorias
 - 📦 **[PACKAGE.md](./PACKAGE.md)** - Documentação do package.json
-- 🤝 **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Guia de contribuição
-- 📚 **[DOCUMENTATION_INDEX.md](./DOCUMENTATION_INDEX.md)** - Índice completo da documentação
 
 ### **📊 Relatórios de Implementação**
 
-- 🧪 **[TEST_COVERAGE_IMPROVEMENTS.md](./TEST_COVERAGE_IMPROVEMENTS.md)** - Melhorias na cobertura de testes
-- 🎨 **[STORYBOOK_IMPLEMENTATION_REPORT.md](./STORYBOOK_IMPLEMENTATION_REPORT.md)** - Implementação do Storybook
-- ⚡ **[PERFORMANCE_OPTIMIZATIONS_REPORT.md](./PERFORMANCE_OPTIMIZATIONS_REPORT.md)** - Otimizações de performance
-- 🚀 **[ADVANCED_IMPROVEMENTS_REPORT.md](./ADVANCED_IMPROVEMENTS_REPORT.md)** - Melhorias avançadas
-
-### **🔧 Guias Técnicos**
-
-- 🔒 **[SECURITY_GUIDE.md](./SECURITY_GUIDE.md)** - Guia completo de segurança
-- 🌐 **[ENVIRONMENT_VARIABLES.md](./ENVIRONMENT_VARIABLES.md)** - Variáveis de ambiente
-- 📈 **[CODECOV_GUIDE.md](./CODECOV_GUIDE.md)** - Configuração do Codecov
-- 🎨 **[TAILWIND_CSS_CONVERSION_REPORT.md](./TAILWIND_CSS_CONVERSION_REPORT.md)** - Conversão para Tailwind CSS
-
-### **📚 Documentação de Componentes**
-
-- 🧩 **[COMPONENTS_LIBRARY.md](./COMPONENTS_LIBRARY.md)** - Biblioteca de componentes
-- 🔍 **[SEO_DYNAMIC_SYSTEM.md](./SEO_DYNAMIC_SYSTEM.md)** - Sistema de SEO dinâmico
-- 📝 **[DYNAMIC_SEO_GUIDE.md](./DYNAMIC_SEO_GUIDE.md)** - Guia de SEO dinâmico
-
-### **🛠️ Guias de Qualidade**
-
-- ✨ **[CODE_QUALITY.md](./CODE_QUALITY.md)** - Padrões de qualidade de código
-- 🔗 **[QUALITY_HOOKS.md](./QUALITY_HOOKS.md)** - Hooks de qualidade
-- 💬 **[COMMENTS_GUIDE.md](./COMMENTS_GUIDE.md)** - Guia de comentários
+- 📚 **[Documentação Completa](./docs/)** - Toda a documentação organizada
+- 📊 **[PROJECT_STATUS_REPORT.md](./docs/PROJECT_STATUS_REPORT.md)** - Status atual do projeto
+- 🧪 **[TEST_RESULTS_REPORT.md](./docs/TEST_RESULTS_REPORT.md)** - Resultados dos testes
+- 🔧 **[TOOLS_UPDATE_REPORT.md](./docs/TOOLS_UPDATE_REPORT.md)** - Atualizações das ferramentas
 
 ---
 
@@ -607,7 +585,7 @@ chore: atualizar dependências
 
 ### **Recursos**
 
-- 📖 **[Documentação Completa](./DOCUMENTATION_INDEX.md)** - Índice de toda documentação
+- 📖 **[Documentação Completa](./docs/DOCUMENTATION_INDEX.md)** - Índice de toda documentação
 - 🐛 **[Issues](https://github.com/jonathanmartins81/boilerplate_aqua9_v2/issues)** - Reportar bugs
 - 💡 **[Discussions](https://github.com/jonathanmartins81/boilerplate_aqua9_v2/discussions)** - Discussões
 - 📧 **Email:** jonathan@aqua9.com.br

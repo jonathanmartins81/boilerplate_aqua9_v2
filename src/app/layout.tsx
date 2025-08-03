@@ -1,21 +1,15 @@
-import { JsonLd } from '@/components/JsonLd';
-import Navigation from '@/components/Navigation';
-import { generateDynamicSEO } from '@/utils/SEO';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+
 import './globals.css';
 import { Providers } from './providers';
 
-export const metadata: Metadata = generateDynamicSEO('/');
+const inter = Inter({ subsets: ['latin'] });
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
-  ],
+export const metadata: Metadata = {
+  title: 'Boilerplate Aqua9 - Next.js Profissional',
+  description:
+    'Template Next.js profissional da Aqua9 com TypeScript, SEO otimizado e ferramentas de qualidade de código',
 };
 
 export default function RootLayout({
@@ -24,15 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='pt-BR'>
-      <head>
-        <JsonLd />
-      </head>
-      <body className='font-sans'>
-        <Providers>
-          <Navigation />
-          {children}
-        </Providers>
+    <html lang='pt-BR' className='scroll-smooth'>
+      <body className={`${inter.className} font-sans`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

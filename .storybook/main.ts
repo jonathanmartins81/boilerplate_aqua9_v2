@@ -4,7 +4,6 @@ const config = {
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
     '@storybook/addon-viewport',
     '@storybook/addon-backgrounds',
     '@storybook/addon-measure',

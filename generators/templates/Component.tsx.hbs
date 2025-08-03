@@ -1,8 +1,28 @@
-import * as S from './styles' const
-{{pascalCase name}}
-= () => (
-<S.Wrapper>
-  <h1>{{pascalCase name}}</h1>
-</S.Wrapper>
-) export default
-{{pascalCase name}}
+import React from 'react';
+import { getStyles } from './styles';
+
+interface {{pascalCase name}}Props {
+  variant?: 'default' | 'elevated' | 'outlined' | 'glass';
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({
+  variant = 'default',
+  className = '',
+  children,
+  ...props
+}) => {
+  const combinedClassName = `${getStyles(variant)} ${className}`.trim();
+
+  return (
+    <div className={combinedClassName} {...props}>
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        {{pascalCase name}}
+      </h1>
+      {children}
+    </div>
+  );
+};
+
+export default {{pascalCase name}};

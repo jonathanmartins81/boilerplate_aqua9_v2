@@ -7,9 +7,9 @@ type ThemeMode = 'light' | 'dark' | 'system';
 
 interface ThemeContextType {
   mode: ThemeMode;
-  setMode: (mode: ThemeMode) => void;
-  toggleMode: () => void;
   isDark: boolean;
+  setMode: (mode: ThemeMode) => void;
+  toggleTheme: () => void;
 }
 
 // ===== CONTEXTO =====
@@ -23,106 +23,90 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({
   children,
-  defaultMode = 'dark',
+  defaultMode = 'system',
 }: ThemeProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(defaultMode);
+  const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // ===== DETECÇÃO DO TEMA DO SISTEMA =====
-  const getSystemTheme = (): 'light' | 'dark' => {
-    if (typeof window === 'undefined') return 'light';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+  // ===== DETECÇÃO DE TEMA DO SISTEMA =====
+  const getSystemTheme = (): boolean => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  };
+
+  // ===== APLICAÇÃO DO TEMA =====
+  const applyTheme = (themeMode: ThemeMode) => {
+    const root = document.documentElement;
+    const isDarkMode =
+      themeMode === 'dark' || (themeMode === 'system' && getSystemTheme());
+
+    setIsDark(isDarkMode);
+
+    if (isDarkMode) {
+      root.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      root.setAttribute('data-theme', 'light');
+    }
   };
 
   // ===== CARREGAMENTO INICIAL =====
   useEffect(() => {
     setMounted(true);
 
-    // Carregar tema do localStorage apenas no cliente
-    if (typeof window !== 'undefined') {
-      const savedMode = window.localStorage.getItem('theme-mode') as ThemeMode;
-      if (savedMode && ['light', 'dark', 'system'].includes(savedMode)) {
-        setMode(savedMode);
-      }
+    // Carregar tema do localStorage
+    const savedMode = localStorage.getItem('theme-mode') as ThemeMode;
+    if (savedMode) {
+      setMode(savedMode);
     }
-  }, []);
+
+    // Aplicar tema inicial
+    applyTheme(savedMode || defaultMode);
+  }, [defaultMode]);
 
   // ===== PERSISTÊNCIA =====
   useEffect(() => {
-    if (!mounted || typeof window === 'undefined') return;
-
-    window.localStorage.setItem('theme-mode', mode);
-  }, [mode, mounted]);
-
-  // ===== APLICAÇÃO DO TEMA =====
-  useEffect(() => {
     if (!mounted) return;
 
-    const getCurrentTheme = () => {
-      const actualMode = mode === 'system' ? getSystemTheme() : mode;
+    localStorage.setItem('theme-mode', mode);
+    applyTheme(mode);
+  }, [mode, mounted]);
 
-      return actualMode === 'dark'
-        ? {
-          'primary-color': '#4F8CFF',
-          'secondary-color': '#A5B4FC',
-          'accent-color': '#FFC145',
-          'background-color': '#181920',
-          'text-color': '#FAFAFA',
-          'border-color': '#222327',
-          'card-color': '#23242BF6',
-        }
-        : {
-          'primary-color': '#0070f3',
-          'secondary-color': '#5856D6',
-          'accent-color': '#FFAD05',
-          'background-color': '#FAFAFA',
-          'text-color': '#1A1A1A',
-          'border-color': '#E5E5E5',
-          'card-color': '#FFFFFFF6',
-        };
-    };
+  // ===== LISTENER PARA MUDANÇAS DO SISTEMA =====
+  useEffect(() => {
+    if (!mounted || mode !== 'system') return;
 
-    const currentTheme = getCurrentTheme();
-    const root = document.documentElement;
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => applyTheme('system');
 
-    // Aplicar classes CSS com transição suave
-    root.classList.remove('light', 'dark');
-    const currentMode = mode === 'system' ? getSystemTheme() : mode;
-    root.classList.add(currentMode);
-
-    // Aplicar variáveis CSS customizadas com transição
-    Object.entries(currentTheme).forEach(([key, value]) => {
-      root.style.setProperty(`--${key}`, value);
-    });
-
-    // Aplicar atributo data-theme
-    root.setAttribute('data-theme', currentMode);
-
-    // Adicionar classe de transição temporária
-    root.classList.add('theme-transitioning');
-    setTimeout(() => {
-      root.classList.remove('theme-transitioning');
-    }, 300);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [mode, mounted]);
 
   // ===== FUNÇÕES DE CONTROLE =====
-
-  const toggleMode = () => {
-    setMode(prev => {
-      if (prev === 'light') return 'dark';
-      if (prev === 'dark') return 'system';
-      return 'light';
-    });
+  const handleSetMode = (newMode: ThemeMode) => {
+    setMode(newMode);
   };
 
+  const toggleTheme = () => {
+    const newMode = mode === 'light' ? 'dark' : 'light';
+    setMode(newMode);
+  };
+
+  // ===== VALOR DO CONTEXTO =====
   const value: ThemeContextType = {
     mode,
-    setMode,
-    toggleMode,
-    isDark: mode === 'system' ? getSystemTheme() === 'dark' : mode === 'dark',
+    isDark,
+    setMode: handleSetMode,
+    toggleTheme,
   };
+
+  // ===== RENDERIZAÇÃO CONDICIONAL =====
+  if (!mounted) {
+    return <div className='min-h-screen bg-white dark:bg-gray-900' />;
+  }
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
@@ -130,7 +114,7 @@ export function ThemeProvider({
 }
 
 // ===== HOOK =====
-export function useTheme() {
+export function useTheme(): ThemeContextType {
   const context = useContext(ThemeContext);
   if (context === undefined) {
     throw new Error('useTheme deve ser usado dentro de um ThemeProvider');

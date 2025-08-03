@@ -174,7 +174,7 @@ export const ValidationUtils = {
 
     if (
       SecuritySettings.password.requireSpecialChars &&
-      !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)
+      !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)
     ) {
       feedback.push('Senha deve conter pelo menos um caractere especial');
     } else {
@@ -293,16 +293,16 @@ export const SanitizationUtils = {
    * Sanitiza objeto removendo propriedades perigosas
    */
   sanitizeObject<T extends Record<string, any>>(obj: T): T {
-    const sanitized = { ...obj };
+    const sanitized = { ...obj } as T;
 
     for (const key in sanitized) {
       if (typeof sanitized[key] === 'string') {
-        sanitized[key] = this.sanitizeString(sanitized[key] as string);
+        (sanitized as any)[key] = this.sanitizeString(sanitized[key] as string);
       } else if (
         typeof sanitized[key] === 'object' &&
         sanitized[key] !== null
       ) {
-        sanitized[key] = this.sanitizeObject(
+        (sanitized as any)[key] = this.sanitizeObject(
           sanitized[key] as Record<string, any>
         );
       }
