@@ -36,7 +36,7 @@ comment:
 
 # ===== CONFIGURAÇÕES DE ARQUIVOS =====
 ignore:
-  # Ignorar arquivos de teste
+  # ===== ARQUIVOS DE TESTE =====
   - '**/*.test.ts'
   - '**/*.test.tsx'
   - '**/*.spec.ts'
@@ -44,7 +44,11 @@ ignore:
   - '**/__tests__/**'
   - '**/tests/**'
   - '**/test/**'
-  # Ignorar arquivos de configuração
+  - '**/tests/e2e/**'
+  - '**/playwright-report/**'
+  - '**/test-results/**'
+
+  # ===== ARQUIVOS DE CONFIGURAÇÃO =====
   - '**/*.config.js'
   - '**/*.config.ts'
   - '**/next.config.js'
@@ -52,59 +56,96 @@ ignore:
   - '**/postcss.config.js'
   - '**/vitest.config.ts'
   - '**/playwright.config.ts'
-  # Ignorar arquivos de build
+  - '**/eslint.config.js'
+  - '**/.eslintrc.*'
+  - '**/.prettierrc.*'
+  - '**/.releaserc.*'
+  - '**/codecov.yml'
+  - '**/lefthook.yml'
+  - '**/.lintstagedrc.*'
+  - '**/.editorconfig'
+
+  # ===== ARQUIVOS DE BUILD =====
   - '**/.next/**'
   - '**/out/**'
   - '**/dist/**'
   - '**/build/**'
-  # Ignorar arquivos de documentação
+  - '**/coverage/**'
+
+  # ===== ARQUIVOS DE DOCUMENTAÇÃO =====
   - '**/*.md'
+  - '**/*.mdx'
   - '**/docs/**'
-  # Ignorar arquivos de tipos
+  - '**/README.md'
+  - '**/PACKAGE.md'
+  - '**/CHANGELOG.md'
+
+  # ===== ARQUIVOS DE TIPOS =====
   - '**/*.d.ts'
-  # Ignorar arquivos de configuração do projeto
+  - '**/next-env.d.ts'
+
+  # ===== ARQUIVOS DE CONFIGURAÇÃO DO PROJETO =====
   - '**/package.json'
   - '**/package-lock.json'
   - '**/yarn.lock'
   - '**/pnpm-lock.yaml'
   - '**/.gitignore'
   - '**/.env*'
-  - '**/.eslintrc*'
-  - '**/.prettierrc*'
   - '**/tsconfig.json'
   - '**/jest.config.*'
   - '**/vite.config.*'
-  # Ignorar arquivos de CI/CD
+
+  # ===== ARQUIVOS DE CI/CD =====
   - '**/.github/**'
   - '**/.gitlab-ci.yml'
   - '**/azure-pipelines.yml'
   - '**/circle.yml'
   - '**/travis.yml'
   - '**/appveyor.yml'
-  # Ignorar arquivos de dependências
+  - '**/.github/workflows/**'
+
+  # ===== ARQUIVOS DE DEPENDÊNCIAS =====
   - '**/node_modules/**'
   - '**/vendor/**'
-  # Ignorar arquivos temporários
+
+  # ===== ARQUIVOS TEMPORÁRIOS =====
   - '**/*.tmp'
   - '**/*.temp'
   - '**/.tmp/**'
   - '**/.temp/**'
-  # Ignorar arquivos de cache
+
+  # ===== ARQUIVOS DE CACHE =====
   - '**/.cache/**'
-  - '**/coverage/**'
-  # Ignorar arquivos de logs
+
+  # ===== ARQUIVOS DE LOGS =====
   - '**/*.log'
   - '**/logs/**'
-  # Ignorar arquivos de IDE
+
+  # ===== ARQUIVOS DE IDE =====
   - '**/.vscode/**'
   - '**/.idea/**'
   - '**/*.swp'
   - '**/*.swo'
   - '**/*~'
-  # Ignorar arquivos de sistema
+
+  # ===== ARQUIVOS DE SISTEMA =====
   - '**/.DS_Store'
   - '**/Thumbs.db'
   - '**/desktop.ini'
+
+  # ===== ARQUIVOS DE STORYBOOK =====
+  - '**/*.stories.ts'
+  - '**/*.stories.tsx'
+  - '**/.storybook/**'
+  - '**/storybook-static/**'
+
+  # ===== ARQUIVOS DE GERADORES =====
+  - '**/generators/**'
+  - '**/plopfile.js'
+
+  # ===== ARQUIVOS DE SCRIPTS =====
+  - '**/scripts/**'
+  - '**/*.sh'
 
 # ===== CONFIGURAÇÕES DE FLAGS =====
 flags:
@@ -126,6 +167,12 @@ flags:
     target: 60%
     # Se deve falhar se não atingir o target
     threshold: 15%
+  # Flag para componentes
+  components:
+    # Cobertura mínima para componentes
+    target: 90%
+    # Se deve falhar se não atingir o target
+    threshold: 5%
 
 # ===== CONFIGURAÇÕES DE NOTIFICAÇÕES =====
 notify:

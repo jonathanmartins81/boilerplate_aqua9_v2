@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+    // ===== NEXT.JS DEBUGGING =====
     {
       "name": "Next.js: debug server-side",
       "type": "node",
@@ -12,7 +13,9 @@
       "skipFiles": ["<node_internals>/**"],
       "env": {
         "NODE_ENV": "development"
-      }
+      },
+      "restart": true,
+      "autoAttachChildProcesses": true
     },
     {
       "name": "Next.js: debug client-side",
@@ -23,7 +26,8 @@
       "sourceMapPathOverrides": {
         "webpack://_N_E/*": "${webRoot}/*",
         "webpack:///./*": "${webRoot}/*"
-      }
+      },
+      "userDataDir": "${workspaceFolder}/.vscode/chrome-debug-profile"
     },
     {
       "name": "Next.js: debug full stack",
@@ -41,6 +45,24 @@
       },
       "env": {
         "NODE_ENV": "development"
+      },
+      "restart": true,
+      "autoAttachChildProcesses": true
+    },
+
+    // ===== TESTING DEBUGGING =====
+    {
+      "name": "Vitest: debug tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/vitest",
+      "args": ["--run", "--reporter=verbose"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "env": {
+        "NODE_ENV": "test"
       }
     },
     {
@@ -53,8 +75,68 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
+      "env": {
+        "NODE_ENV": "test"
+      },
       "windows": {
         "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    },
+
+    // ===== E2E TESTING =====
+    {
+      "name": "Playwright: debug E2E tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/playwright",
+      "args": ["test", "--debug"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "test"
+      }
+    },
+
+    // ===== STORYBOOK DEBUGGING =====
+    {
+      "name": "Storybook: debug",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/storybook",
+      "args": ["dev", "-p", "6006"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+
+    // ===== BUILD DEBUGGING =====
+    {
+      "name": "Next.js: debug build",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "args": ["build"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+
+    // ===== LINTING DEBUGGING =====
+    {
+      "name": "ESLint: debug",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/eslint",
+      "args": ["src/**/*.{ts,tsx}", "--debug"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development"
       }
     }
   ]

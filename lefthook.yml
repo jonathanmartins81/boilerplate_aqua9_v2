@@ -4,53 +4,53 @@
 # Este arquivo configura hooks do Git para garantir qualidade de código
 # antes de commits e pushes.
 
-# Hooks executados antes do commit
+# ===== HOOKS EXECUTADOS ANTES DO COMMIT =====
 pre-commit:
   parallel: true
   commands:
-    # Formatação com Prettier
+    # ===== FORMATAÇÃO =====
     format:
       glob: '*.{js,jsx,ts,tsx,json,css,md,yml,yaml}'
       run: npx prettier --write {staged_files}
 
-    # Linting com ESLint
+    # ===== LINTING =====
     lint:
       glob: '*.{js,jsx,ts,tsx}'
       run: npx eslint --fix {staged_files}
 
-    # Verificação de tipos TypeScript
+    # ===== VERIFICAÇÃO DE TIPOS =====
     type-check:
       glob: '*.{ts,tsx}'
       run: npx tsc --noEmit
 
-    # Verificação de dependências não utilizadas (desabilitado temporariamente)
-    # check-deps:
-    #   run: npx knip --reporter=json
-
-    # Testes unitários OBRIGATÓRIOS (todos os testes devem passar)
+    # ===== TESTES UNITÁRIOS =====
     test:
       run: npx vitest run --reporter=verbose --run --coverage=false
 
-# Hooks executados antes do push
+# ===== HOOKS EXECUTADOS ANTES DO PUSH =====
 pre-push:
   parallel: false
   commands:
-    # Build de produção
+    # ===== BUILD DE PRODUÇÃO =====
     build:
       run: npm run build
 
-    # Verificação de vulnerabilidades
+    # ===== VERIFICAÇÃO DE VULNERABILIDADES =====
     audit:
       run: npm audit --audit-level=moderate
 
-    # Verificação de qualidade (sem check-deps)
+    # ===== VERIFICAÇÃO DE QUALIDADE =====
     quality:
       run: npm run quality
 
-# Hooks executados após o commit
+    # ===== TESTES DE COBERTURA =====
+    coverage:
+      run: npm run test:coverage:ci
+
+# ===== HOOKS EXECUTADOS APÓS O COMMIT =====
 post-commit:
   commands:
-    # Relatório de qualidade
+    # ===== RELATÓRIO DE QUALIDADE =====
     quality-report:
       run: |
         echo "🎉 Commit realizado com sucesso!"
@@ -58,14 +58,37 @@ post-commit:
         echo "🧪 Testes executados"
         echo "🔍 Dependências verificadas"
         echo "📊 Qualidade garantida"
+        echo ""
+        echo "📋 Próximos passos:"
+        echo "   • Execute 'npm run dev' para desenvolvimento"
+        echo "   • Execute 'npm run test:coverage' para ver cobertura"
+        echo "   • Execute 'npm run storybook' para documentação"
 
-# Hooks executados após o merge
+# ===== HOOKS EXECUTADOS APÓS O MERGE =====
 post-merge:
   commands:
-    # Instalar dependências após merge
+    # ===== INSTALAR DEPENDÊNCIAS =====
     install:
       run: npm install
 
-    # Verificar se tudo está funcionando
+    # ===== VERIFICAR SE TUDO ESTÁ FUNCIONANDO =====
     verify:
+      run: npm run quality
+
+# ===== HOOKS EXECUTADOS APÓS CHECKOUT =====
+post-checkout:
+  commands:
+    # ===== VERIFICAR DEPENDÊNCIAS =====
+    check-deps:
+      run: npm run deps:check
+
+# ===== HOOKS EXECUTADOS APÓS REBASE =====
+post-rebase:
+  commands:
+    # ===== REINSTALAR DEPENDÊNCIAS =====
+    reinstall:
+      run: npm ci
+
+    # ===== VERIFICAR QUALIDADE =====
+    quality-check:
       run: npm run quality

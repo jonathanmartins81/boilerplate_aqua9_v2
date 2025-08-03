@@ -1,139 +1,129 @@
-# Dependencies
+# ===== DEPENDÊNCIAS =====
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Next.js
+# ===== NEXT.JS =====
 .next/
 out/
 build/
 dist/
+.next/analyze/
+.next/performance/
 
-# Production
+# ===== PRODUÇÃO =====
 /build
+/out
 
-# Misc
+# ===== ARQUIVOS DE SISTEMA =====
 .DS_Store
-*.pem
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
-# Debug
+# ===== ARQUIVOS TEMPORÁRIOS =====
+*.tmp
+*.temp
+.tmp/
+.temp/
+tmp/
+temp/
+
+# ===== ARQUIVOS DE LOG =====
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
-# Local env files
-.env*.local
-.env
-
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
-# Testing
-coverage/
-.nyc_output/
-*.lcov
-
-# Storybook
-storybook-static/
-
-# IDE
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-logs
-*.log
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Dependency directories
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Microbundle cache
+# ===== ARQUIVOS DE CACHE =====
+.cache/
+.parcel-cache/
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
 .rts2_cache_umd/
+.microbundle-cache/
 
-# Optional REPL history
-.node_repl_history
+# ===== ARQUIVOS DE ENV =====
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
 
-# Output of 'npm pack'
-*.tgz
+# ===== TYPESCRIPT =====
+*.tsbuildinfo
+next-env.d.ts
 
-# Yarn Integrity file
-.yarn-integrity
+# ===== TESTES =====
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+playwright-report/
+*.junit.xml
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# Nuxt.js build / generate output
-.nuxt
-
-# Gatsby files
-.cache/
-
-# Storybook build outputs
+# ===== STORYBOOK =====
+storybook-static/
 .out
 .storybook-out
 
-# Temporary folders
-tmp/
-temp/
-
-# Editor directories and files
-.idea
+# ===== IDE E EDITORES =====
+.idea/
+*.swp
+*.swo
+*~
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Local Netlify folder
+# ===== DEPLOYMENT =====
+.vercel
 .netlify
+.railway
 
-# Vitest
-coverage/
-*.lcov
+# ===== DEPENDÊNCIAS ESPECÍFICAS =====
+jspm_packages/
 
-# Playwright
-playwright-report/
-test-results/
+# ===== CACHE DO NPM =====
+.npm
+.eslintcache
+.stylelintcache
 
-# Lefthook
+# ===== HISTÓRICO =====
+.node_repl_history
+
+# ===== ARQUIVOS DE PACOTE =====
+*.tgz
+.yarn-integrity
+
+# ===== FRAMEWORKS ESPECÍFICOS =====
+.nuxt
+.cache/
+
+# ===== LEFTHOOK =====
 .lefthook/
 
-# Turbo
+# ===== TURBO =====
 .turbo/
 
-# Sentry
+# ===== SENTRY =====
 .sentryclirc
 
-# Bundle analyzer
-.next/analyze/
-
-# PWA files
+# ===== PWA =====
 **/public/sw.js
 **/public/workbox-*.js
 **/public/worker-*.js
@@ -141,22 +131,48 @@ test-results/
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
 
-# Local development
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# ===== ARQUIVOS DE PERFORMANCE =====
+lighthouse-report.json
+lighthouse-report.html
 
-# Performance monitoring
-.next/performance/
+# ===== ARQUIVOS DE DEBUG =====
+*.pem
+debug.log
 
-# Debug files
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
+# ===== ARQUIVOS DE RUNTIME =====
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# Optional: Uncomment if you want to ignore specific files in public
+# ===== ARQUIVOS DE CONFIGURAÇÃO LOCAL =====
+# Descomente se quiser ignorar arquivos específicos em public
 # public/robots.txt
 # public/sitemap.xml
+
+# ===== ARQUIVOS DE DOCUMENTAÇÃO TEMPORÁRIA =====
+docs/temp/
+docs/drafts/
+
+# ===== ARQUIVOS DE BACKUP =====
+*.bak
+*.backup
+*.old
+
+# ===== ARQUIVOS DE MÍDIA TEMPORÁRIA =====
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# ===== ARQUIVOS DE COMPRESSÃO =====
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+
+# ===== ARQUIVOS DE FONTE TEMPORÁRIOS =====
+*.orig
+*.rej

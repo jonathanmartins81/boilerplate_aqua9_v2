@@ -6,7 +6,7 @@
  */
 
 export default {
-  // Arquivos TypeScript e JavaScript (excluindo testes E2E)
+  // ===== ARQUIVOS TYPESCRIPT E JAVASCRIPT =====
   '*.{js,jsx,ts,tsx}': files => {
     const e2eFiles = files.filter(file => !file.includes('tests/e2e'));
     if (e2eFiles.length === 0) return [];
@@ -21,23 +21,51 @@ export default {
     ];
   },
 
-  // Arquivos de configuração e outros
+  // ===== ARQUIVOS DE CONFIGURAÇÃO =====
   '*.{json,md,yml,yaml}': [
     // Formatar arquivos de configuração
     'prettier --write',
   ],
 
-  // Arquivos CSS e SCSS
+  // ===== ARQUIVOS DE ESTILO =====
   '*.{css,scss}': [
     // Formatar estilos
     'prettier --write',
   ],
 
-  // Todos os arquivos (verificação final)
+  // ===== ARQUIVOS DE DOCUMENTAÇÃO =====
+  '*.{md,mdx}': [
+    // Formatar documentação
+    'prettier --write',
+  ],
+
+  // ===== ARQUIVOS DE CONFIGURAÇÃO ESPECÍFICOS =====
+  '*.{config.js,config.ts}': [
+    // Formatar arquivos de configuração
+    'prettier --write',
+  ],
+
+  // ===== ARQUIVOS DE TESTE =====
+  '*.{test.ts,test.tsx,spec.ts,spec.tsx}': [
+    // Formatar arquivos de teste
+    'prettier --write',
+    // Lintar arquivos de teste
+    'eslint --fix',
+  ],
+
+  // ===== ARQUIVOS DO STORYBOOK =====
+  '*.stories.{ts,tsx}': [
+    // Formatar arquivos do Storybook
+    'prettier --write',
+    // Lintar arquivos do Storybook
+    'eslint --fix',
+  ],
+
+  // ===== VERIFICAÇÕES GLOBAIS =====
   '*': [
     // Verificar se não há erros de TypeScript
     () => 'npm run type-check',
-    // Verificar dependências não utilizadas
-    () => 'npm run check-deps',
+    // Verificar dependências não utilizadas (opcional)
+    () => 'npm run deps:check',
   ],
 };

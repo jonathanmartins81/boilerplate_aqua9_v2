@@ -34,6 +34,36 @@
       "options": {
         "parser": "markdown"
       }
+    },
+    {
+      "files": ["*.yml", "*.yaml"],
+      "options": {
+        "parser": "yaml"
+      }
+    },
+    {
+      "files": ["*.css", "*.scss"],
+      "options": {
+        "parser": "css"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": ["*.sh"],
+      "options": {
+        "parser": "bash"
+      }
+    },
+    {
+      "files": ["Dockerfile"],
+      "options": {
+        "parser": "docker"
+      }
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     // ===== CONFIGURAÇÕES DE TARGET =====
-    "target": "ES2017", // Versão do JavaScript para compilação
-    "lib": ["dom", "dom.iterable", "es6"], // Bibliotecas TypeScript incluídas
+    "target": "ES2020", // Versão mais moderna do JavaScript
+    "lib": ["dom", "dom.iterable", "es6", "es2020"], // Bibliotecas TypeScript incluídas
     "allowJs": true, // Permite arquivos JavaScript
     "skipLibCheck": true, // Pula verificação de tipos em arquivos de biblioteca
 
@@ -14,10 +14,12 @@
     "moduleResolution": "bundler", // Resolução de módulos para bundlers
     "resolveJsonModule": true, // Permite importar arquivos JSON
     "isolatedModules": true, // Garante que cada arquivo pode ser compilado independentemente
+    "allowSyntheticDefaultImports": true, // Permite imports de default sintéticos
 
     // ===== CONFIGURAÇÕES DE JSX =====
     "jsx": "preserve", // Preserva JSX para o Next.js processar
     "incremental": true, // Compilação incremental para melhor performance
+    "forceConsistentCasingInFileNames": true, // Força consistência no case dos nomes de arquivos
 
     // ===== CONFIGURAÇÕES DE IMPORTS =====
     "plugins": [
@@ -33,8 +35,19 @@
       "@/lib/*": ["./src/lib/*"], // Alias para bibliotecas
       "@/utils/*": ["./src/utils/*"], // Alias para utilitários
       "@/types/*": ["./src/types/*"], // Alias para tipos
-      "@/styles/*": ["./src/styles/*"] // Alias para estilos
-    }
+      "@/styles/*": ["./src/styles/*"], // Alias para estilos
+      "@/contexts/*": ["./src/contexts/*"], // Alias para contextos
+      "@/hooks/*": ["./src/hooks/*"], // Alias para hooks
+      "@/app/*": ["./src/app/*"] // Alias para app
+    },
+
+    // ===== CONFIGURAÇÕES DE PERFORMANCE =====
+    "assumeChangesOnlyAffectDirectDependencies": true, // Otimização de performance
+    "disableSourceOfProjectReferenceRedirect": true, // Desabilita redirecionamento de referência
+    "noUncheckedIndexedAccess": true, // Adiciona verificações de segurança para acesso a índices
+    "exactOptionalPropertyTypes": true, // Verificação mais estrita de propriedades opcionais
+    "noImplicitReturns": true, // Força retornos explícitos
+    "noFallthroughCasesInSwitch": true // Força break em switch cases
   },
   "include": [
     // ===== ARQUIVOS INCLUÍDOS NA COMPILAÇÃO =====
@@ -42,15 +55,42 @@
     "**/*.ts", // Todos os arquivos TypeScript
     "**/*.tsx", // Todos os arquivos TypeScript React
     ".next/types/**/*.ts", // Tipos gerados pelo Next.js
-    "vitest.config.ts" // Configuração do Vitest
+    "vitest.config.ts", // Configuração do Vitest
+    "playwright.config.ts", // Configuração do Playwright
+    "tailwind.config.ts", // Configuração do Tailwind
+    "postcss.config.js", // Configuração do PostCSS
+    "eslint.config.js" // Configuração do ESLint
   ],
-  "types": ["vitest/globals"],
+  "types": ["vitest/globals", "node"],
   "exclude": [
     // ===== ARQUIVOS EXCLUÍDOS DA COMPILAÇÃO =====
     "node_modules", // Dependências do npm
+    ".next", // Build do Next.js
+    "dist", // Build de distribuição
+    "build", // Build de produção
+    "coverage", // Relatórios de cobertura
+    "test-results", // Resultados de testes
+    "playwright-report", // Relatórios do Playwright
+    "docs", // Documentação
     "**/*.test.ts", // Arquivos de teste
     "**/*.test.tsx", // Arquivos de teste React
     "**/*.spec.ts", // Arquivos de teste
-    "**/*.spec.tsx" // Arquivos de teste React
+    "**/*.spec.tsx", // Arquivos de teste React
+    "**/*.stories.ts", // Arquivos do Storybook
+    "**/*.stories.tsx", // Arquivos do Storybook
+    "**/__snapshots__/**", // Snapshots de testes
+    "**/*.snap", // Arquivos de snapshot
+    "**/setupTests.*", // Arquivos de setup de testes
+    "**/.vitest/**", // Configuração do Vitest
+    "**/generators/**", // Geradores
+    "**/public/**", // Arquivos públicos
+    "**/*.md", // Arquivos markdown
+    "**/*.json", // Arquivos JSON (exceto configurações)
+    "**/*.yml", // Arquivos YAML
+    "**/*.yaml", // Arquivos YAML
+    "**/*.lock", // Arquivos de lock
+    "**/*.log", // Arquivos de log
+    "**/*.tmp", // Arquivos temporários
+    "**/*.temp" // Arquivos temporários
   ]
 }

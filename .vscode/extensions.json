@@ -1,32 +1,57 @@
 {
   "recommendations": [
+    // ===== FORMATTAÇÃO E QUALIDADE DE CÓDIGO =====
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-typescript-next",
-    "formulahendry.auto-rename-tag",
-    "christian-kohler.path-intellisense",
+    "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-json",
-    "yzhang.markdown-all-in-one",
     "ms-vscode.vscode-yaml",
-    "ms-vscode.vscode-git-graph",
-    "eamodio.gitlens",
-    "ms-vscode.vscode-github",
+    "ms-vscode.vscode-markdown",
+    "yzhang.markdown-all-in-one",
+
+    // ===== DESENVOLVIMENTO REACT/NEXT.JS =====
     "ms-vscode.vscode-js-debug",
     "ms-vscode.vscode-js-debug-companion",
     "ms-vscode.vscode-js-profile-flame",
     "ms-vscode.vscode-js-profile-table",
-    "ms-vscode.vscode-typescript-next",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+
+    // ===== GIT E VERSIONAMENTO =====
+    "eamodio.gitlens",
+    "ms-vscode.vscode-git",
+    "ms-vscode.vscode-github",
+    "ms-vscode.vscode-git-graph",
+    "ms-vscode.vscode-github-issue-notebooks",
+
+    // ===== TESTES =====
+    "orta.vscode-jest",
+    "ms-vscode.test-adapter-converter",
+    "hbenl.vscode-test-explorer",
+
+    // ===== PRODUTIVIDADE =====
     "ms-vscode.vscode-json",
     "ms-vscode.vscode-yaml",
     "ms-vscode.vscode-markdown",
-    "ms-vscode.vscode-git",
-    "ms-vscode.vscode-github",
-    "ms-vscode.vscode-github-issue-notebooks",
-    "ms-vscode.vscode-github-issue-notebooks",
-    "ms-vscode.vscode-github-issue-notebooks",
-    "ms-vscode.vscode-github-issue-notebooks",
-    "ms-vscode.vscode-github-issue-notebooks"
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+
+    // ===== TEMAS E ÍCONES =====
+    "dracula-theme.theme-dracula",
+    "pkief.material-icon-theme",
+    "zhuangtongfa.material-theme",
+
+    // ===== ACESSIBILIDADE =====
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+
+    // ===== PERFORMANCE =====
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-markdown"
   ],
   "unwantedRecommendations": [
     "ms-vscode.vscode-typescript",

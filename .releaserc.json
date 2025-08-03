@@ -9,6 +9,10 @@
     {
       "name": "alpha",
       "prerelease": true
+    },
+    {
+      "name": "develop",
+      "prerelease": true
     }
   ],
   "plugins": [
@@ -20,7 +24,12 @@
     [
       "@semantic-release/git",
       {
-        "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
+        "assets": [
+          "package.json",
+          "package-lock.json",
+          "CHANGELOG.md",
+          "docs/**"
+        ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
@@ -69,6 +78,14 @@
     },
     {
       "type": "revert",
+      "release": "patch"
+    },
+    {
+      "type": "security",
+      "release": "patch"
+    },
+    {
+      "type": "deps",
       "release": "patch"
     },
     {
@@ -146,6 +163,16 @@
         {
           "type": "revert",
           "section": "⏪ Reverts",
+          "hidden": false
+        },
+        {
+          "type": "security",
+          "section": "🔒 Security",
+          "hidden": false
+        },
+        {
+          "type": "deps",
+          "section": "📦 Dependencies",
           "hidden": false
         }
       ]

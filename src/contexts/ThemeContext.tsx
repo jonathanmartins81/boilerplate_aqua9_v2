@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
 // ===== TIPOS =====
 type ThemeMode = 'light' | 'dark' | 'system';
@@ -10,6 +10,7 @@ interface ThemeContextType {
   isDark: boolean;
   setMode: (mode: ThemeMode) => void;
   toggleTheme: () => void;
+  mounted: boolean;
 }
 
 // ===== CONTEXTO =====
@@ -30,13 +31,15 @@ export function ThemeProvider({
   const [mounted, setMounted] = useState(false);
 
   // ===== DETECÇÃO DE TEMA DO SISTEMA =====
-  const getSystemTheme = (): boolean => {
+  const getSystemTheme = useCallback((): boolean => {
     if (typeof window === 'undefined') return false;
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  };
+  }, []);
 
   // ===== APLICAÇÃO DO TEMA =====
-  const applyTheme = (themeMode: ThemeMode) => {
+  const applyTheme = useCallback((themeMode: ThemeMode) => {
+    if (typeof document === 'undefined') return;
+
     const root = document.documentElement;
     const isDarkMode =
       themeMode === 'dark' || (themeMode === 'system' && getSystemTheme());
@@ -50,7 +53,7 @@ export function ThemeProvider({
       root.classList.remove('dark');
       root.setAttribute('data-theme', 'light');
     }
-  };
+  }, [getSystemTheme]);
 
   // ===== CARREGAMENTO INICIAL =====
   useEffect(() => {
@@ -64,7 +67,7 @@ export function ThemeProvider({
 
     // Aplicar tema inicial
     applyTheme(savedMode || defaultMode);
-  }, [defaultMode]);
+  }, [defaultMode, applyTheme]);
 
   // ===== PERSISTÊNCIA =====
   useEffect(() => {
@@ -72,7 +75,7 @@ export function ThemeProvider({
 
     localStorage.setItem('theme-mode', mode);
     applyTheme(mode);
-  }, [mode, mounted]);
+  }, [mode, mounted, applyTheme]);
 
   // ===== LISTENER PARA MUDANÇAS DO SISTEMA =====
   useEffect(() => {
@@ -83,7 +86,7 @@ export function ThemeProvider({
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [mode, mounted]);
+  }, [mode, mounted, applyTheme]);
 
   // ===== FUNÇÕES DE CONTROLE =====
   const handleSetMode = (newMode: ThemeMode) => {
@@ -101,12 +104,8 @@ export function ThemeProvider({
     isDark,
     setMode: handleSetMode,
     toggleTheme,
+    mounted,
   };
-
-  // ===== RENDERIZAÇÃO CONDICIONAL =====
-  if (!mounted) {
-    return <div className='min-h-screen bg-white dark:bg-gray-900' />;
-  }
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

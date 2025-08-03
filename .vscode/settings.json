@@ -1,4 +1,5 @@
 {
+  // ===== CONFIGURAÇÕES DO EDITOR =====
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -19,8 +20,20 @@
     "comments": false,
     "strings": true
   },
+  "editor.minimap.enabled": true,
+  "editor.minimap.showSlider": "always",
+  "editor.renderWhitespace": "boundary",
+  "editor.renderControlCharacters": false,
+  "editor.renderLineHighlight": "all",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+
+  // ===== CONFIGURAÇÕES DE ARQUIVOS =====
   "files.associations": {
-    "*.css": "tailwindcss"
+    "*.css": "tailwindcss",
+    "*.scss": "scss",
+    "*.sass": "sass"
   },
   "files.exclude": {
     "**/.git": true,
@@ -29,7 +42,10 @@
     "**/.next": true,
     "**/coverage": true,
     "**/dist": true,
-    "**/.turbo": true
+    "**/.turbo": true,
+    "**/test-results": true,
+    "**/playwright-report": true,
+    "**/storybook-static": true
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -37,23 +53,44 @@
     "**/coverage": true,
     "**/dist": true,
     "**/.turbo": true,
-    "**/package-lock.json": true
+    "**/package-lock.json": true,
+    "**/test-results": true,
+    "**/playwright-report": true
   },
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ===== CONFIGURAÇÕES DO TYPESCRIPT =====
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.suggest.autoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+  "typescript.suggest.includeCompletionsWithSnippetText": true,
+
+  // ===== CONFIGURAÇÕES DO EMMET =====
   "emmet.includeLanguages": {
     "typescript": "html",
     "typescriptreact": "html"
   },
+  "emmet.triggerExpansionOnTab": true,
+
+  // ===== CONFIGURAÇÕES DO TAILWIND CSS =====
   "tailwindCSS.includeLanguages": {
     "typescript": "html",
     "typescriptreact": "html"
   },
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
+  "tailwindCSS.showPixelEquivalents": true,
+  "tailwindCSS.suggestions": true,
+
+  // ===== CONFIGURAÇÕES DO ESLINT =====
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -61,13 +98,26 @@
     "typescriptreact"
   ],
   "eslint.workingDirectories": ["."],
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+
+  // ===== CONFIGURAÇÕES DO PRETTIER =====
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": true,
+  "prettier.enable": true,
+
+  // ===== CONFIGURAÇÕES DO GIT =====
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
   "git.autofetch": true,
+  "git.autofetchPeriod": 180,
   "gitlens.codeLens.enabled": true,
   "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.enabled": true,
+  "gitlens.blame.format": "${author}, ${agoOrDate} • ${message}",
+  "gitlens.statusBar.enabled": true,
+
+  // ===== CONFIGURAÇÕES DE EXTENSÕES =====
   "auto-rename-tag.activationOnLanguage": [
     "html",
     "xml",
@@ -87,10 +137,17 @@
   ],
   "bracket-pair-colorizer-2.showBracketsInGutter": true,
   "bracket-pair-colorizer-2.showBracketsInRuler": true,
+
+  // ===== CONFIGURAÇÕES DO WORKBENCH =====
   "workbench.colorTheme": "Dracula Theme",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.preferredDarkColorTheme": "One Dark Pro",
   "workbench.preferredLightColorTheme": "One Light Pro",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+
+  // ===== CONFIGURAÇÕES DO TERMINAL =====
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
@@ -99,6 +156,9 @@
   "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.shellIntegration.enabled": true,
+
+  // ===== CONFIGURAÇÕES DO LIVE SERVER =====
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
   "liveServer.settings.ignoreFiles": [
@@ -107,6 +167,8 @@
     "**/*.sass",
     "**/*.ts"
   ],
+
+  // ===== CONFIGURAÇÕES DE TESTES =====
   "jest.autoRun": {
     "watch": false,
     "onSave": "test-file"
@@ -160,5 +222,21 @@
   "testing.autoRun.onWebview": false,
   "testing.autoRun.onNotebook": false,
   "testing.autoRun.onChat": false,
-  "testing.automaticallyOpenTestResults": "never"
+  "testing.automaticallyOpenTestResults": "never",
+
+  // ===== CONFIGURAÇÕES DE PERFORMANCE =====
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/coverage/**": true,
+    "**/dist/**": true
+  },
+  "search.useGlobalIgnoreFiles": true,
+  "search.useParentIgnoreFiles": true,
+
+  // ===== CONFIGURAÇÕES DE ACESSIBILIDADE =====
+  "editor.accessibilitySupport": "auto",
+  "workbench.accessibilitySupport": "auto"
 }

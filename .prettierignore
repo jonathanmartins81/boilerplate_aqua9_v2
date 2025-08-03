@@ -1,6 +1,80 @@
+# ===== DIRETÓRIOS DE BUILD =====
+.next/
+out/
+build/
+dist/
+coverage/
+
+# ===== DEPENDÊNCIAS =====
+node_modules/
+
+# ===== ARQUIVOS DE CONFIGURAÇÃO ESPECÍFICOS =====
 !.storybook
 !.jest
-build
-coverage
-.next
 generators/templates/*.hbs
+
+# ===== ARQUIVOS DE TESTE =====
+test-results/
+playwright-report/
+
+# ===== ARQUIVOS DE CACHE =====
+.cache/
+.parcel-cache/
+
+# ===== ARQUIVOS DE LOG =====
+*.log
+
+# ===== ARQUIVOS DE LOCK =====
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ===== ARQUIVOS DE DOCUMENTAÇÃO GERADOS =====
+CHANGELOG.md
+
+# ===== ARQUIVOS DE CONFIGURAÇÃO DE DEPLOYMENT =====
+.vercel/
+.netlify/
+
+# ===== ARQUIVOS TEMPORÁRIOS =====
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# ===== ARQUIVOS DE MÍDIA =====
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.mp3
+*.wav
+*.ogg
+
+# ===== ARQUIVOS DE IMAGEM =====
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+
+# ===== ARQUIVOS DE FONTE =====
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# ===== ARQUIVOS DE COMPRESSÃO =====
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+
+# ===== ARQUIVOS DE BACKUP =====
+*.bak
+*.backup
+*.old

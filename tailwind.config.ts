@@ -10,6 +10,7 @@ const config: Config = {
     './src/hooks/**/*.{js,ts,jsx,tsx,mdx}',
     './src/styles/**/*.{js,ts,jsx,tsx,mdx}',
     './src/types/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/contexts/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -232,6 +233,8 @@ const config: Config = {
         float: 'float 3s ease-in-out infinite',
         glow: 'glow 2s ease-in-out infinite alternate',
         shimmer: 'shimmer 2s linear infinite',
+        'spin-slow': 'spin 3s linear infinite',
+        'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
 
       keyframes: {
@@ -286,6 +289,8 @@ const config: Config = {
         'glow-success': '0 0 20px rgba(34, 197, 94, 0.3)',
         'glow-warning': '0 0 20px rgba(245, 158, 11, 0.3)',
         'glow-error': '0 0 20px rgba(239, 68, 68, 0.3)',
+        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        'inner-medium': 'inset 0 2px 8px 0 rgba(0, 0, 0, 0.1)',
       },
 
       // ===== GRADIENTS =====
@@ -299,6 +304,8 @@ const config: Config = {
         'gradient-accent': 'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)',
         'gradient-warm': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
         'gradient-cool': 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+        'gradient-dark': 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+        'gradient-light': 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
       },
 
       // ===== UTILITÁRIOS PERSONALIZADOS =====
@@ -330,6 +337,18 @@ const config: Config = {
         '65': '0.65',
         '85': '0.85',
       },
+
+      // ===== TRANSITIONS =====
+      transitionDuration: {
+        '400': '400ms',
+        '600': '600ms',
+        '800': '800ms',
+      },
+
+      transitionTimingFunction: {
+        'bounce-in': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+        smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
     },
   },
 
@@ -344,6 +363,11 @@ const config: Config = {
   darkMode: 'class', // Habilita dark mode baseado em classe
   corePlugins: {
     preflight: true, // Mantém o CSS reset do Tailwind
+  },
+
+  // ===== OTIMIZAÇÕES DE PERFORMANCE =====
+  future: {
+    hoverOnlyWhenSupported: true,
   },
 };
 
